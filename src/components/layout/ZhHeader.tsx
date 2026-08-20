@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
@@ -63,7 +64,7 @@ export function ZhHeader() {
           </nav>
         </details>
         <Link className="brand" href="/zh/" aria-label="BNTU 中文首页">
-          <img className="brand-logo" src="/brand/bntu-logo.png" alt="BNTU" />
+          <Image className="brand-logo" src="/brand/bntu-logo.png" alt="BNTU" width={55} height={55} priority />
           <span className="brand-name">Белорусский национальный<br />технический университет</span>
         </Link>
         <nav className="primary-nav" aria-label="主导航">

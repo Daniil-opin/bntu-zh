@@ -1,5 +1,3 @@
-import { MapEmbed } from "@/components/layout/MapEmbed";
-
 export function ZhFooter() {
   return (
     <footer>

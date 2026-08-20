@@ -25,8 +25,9 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
   useEffect(() => {
     const savedTheme = (window.localStorage.getItem(STORAGE_KEY) ?? window.localStorage.getItem(LEGACY_STORAGE_KEY)) as Theme | null;
     const initialTheme = savedTheme === "light" || savedTheme === "dark" ? savedTheme : getSystemTheme();
-    setTheme(initialTheme);
     applyTheme(initialTheme);
+
+    queueMicrotask(() => setTheme(initialTheme));
 
     if (savedTheme) return;
 
