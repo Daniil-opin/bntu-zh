@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Slab:wght@700;800&display=swap");
+
+:root {
+  --brand-primary: #1b8a63;
+  --brand-primary-80: rgba(27, 138, 99, 0.8);
+  --brand-primary-60: rgba(27, 138, 99, 0.6);
+  --brand-primary-40: rgba(27, 138, 99, 0.4);
+  --brand-primary-20: rgba(27, 138, 99, 0.2);
+  --brand-dark: #2e2d2c;
+  --brand-dark-80: rgba(46, 45, 44, 0.8);
+  --brand-dark-60: rgba(46, 45, 44, 0.6);
+  --brand-pink: #ca759c;
+  --brand-burgundy: #8a1b42;
+  --brand-lime: #cfdb6e;
+  --brand-violet: #6c68ad;
+  --brand-coral: #e37d6b;
+  --brand-gold: #e2b86b;
+  --background: #ffffff;
+  --foreground: var(--brand-dark);
+}
+
+html {
+  height: 100%;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
