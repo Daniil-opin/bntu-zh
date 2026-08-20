@@ -17,10 +17,13 @@
   --brand-gold: #e2b86b;
   --background: #ffffff;
   --foreground: var(--brand-dark);
+  --page-background: #ffffff;
 }
 
 html {
   height: 100%;
+  background: var(--page-background);
+  overscroll-behavior-y: none;
 }
 
 html,
@@ -30,11 +33,11 @@ body {
 }
 
 body {
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   color: var(--foreground);
-  background: var(--background);
+  background: var(--page-background);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
