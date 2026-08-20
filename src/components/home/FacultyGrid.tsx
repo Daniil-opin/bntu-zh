@@ -13,7 +13,7 @@ export function FacultyGrid() {
   return (
     <section id="faculties" aria-label="学院">
       <h2>学院</h2>
-      <div>
+      <div className="faculty-card-list">
         {featuredFaculties.map((f) => (
           <FacultyCard key={f.slug} faculty={f} headingLevel="h3" />
         ))}

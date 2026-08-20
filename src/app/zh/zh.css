@@ -43,8 +43,25 @@
 .zh-shell h2 { margin: 0 0 1.4rem; padding-top: 0.8rem; border-top: 2px solid var(--brand-primary); font-size: clamp(2rem, 4vw, 3.5rem); }
 .zh-shell h3 { margin: 0 0 0.6rem; font-size: clamp(1.25rem, 2vw, 1.7rem); }
 .zh-shell p { max-width: 70ch; margin: 0 0 1rem; font-size: 1rem; }
+.zh-shell ol, .zh-shell ul { margin: 0 0 1.1rem; padding-left: 0; list-style: none; }
+.zh-shell li { margin: 0 0 0.35rem; line-height: 1.5; }
+.zh-shell li::marker { content: ""; display: none; }
+.zh-shell li:last-child { margin-bottom: 0; }
+.zh-shell summary::-webkit-details-marker { display: none; }
+.zh-shell summary::marker { content: ""; display: none; }
 .zh-shell > main { max-width: var(--max-width); margin: 0 auto; padding: 0 2rem 6rem; }
-.zh-shell > main > section { margin-bottom: 6rem; }
+.zh-shell > main > section,
+.zh-shell > main > .zh-home-page > section { margin-bottom: 3.5rem; }
+.zh-shell > main > .zh-home-page > section:last-of-type { margin-bottom: 0; }
+.zh-shell > main > h1,
+.zh-shell > main > section:first-of-type > h1,
+.zh-shell > main > .zh-home-page > section:first-of-type > h1 {
+  margin-top: 0.5rem;
+}
+.zh-shell > main > .zh-home-page { padding-top: 0; }
+.zh-shell > main > :first-child:not(.zh-home-page) {
+  margin-top: 0.5rem;
+}
 
 .zh-shell > header { background: var(--color-background); border-bottom: 1px solid var(--color-border); }
 .header-inner { max-width: none; margin: 0 auto; padding: 0 1.75rem; }
@@ -111,10 +128,94 @@
 .zh-shell article { margin-bottom: 1rem; padding: 1.5rem; border: 1px solid var(--color-border); border-left: 3px solid var(--brand-primary); border-radius: 2px; background: var(--color-surface); transition: border-color 0.15s ease, transform 0.15s ease; }
 .zh-shell a:has(article) { display: block; color: inherit; text-decoration: none; }
 .zh-shell article:hover { border-color: var(--brand-primary); transform: translateY(-2px); }
-.zh-shell details { padding: 1rem 0; border-bottom: 1px solid var(--color-border); }
+
+.zh-shell .faculty-search { display: block; }
+.zh-shell .faculty-search-label { display: block; margin-bottom: 1rem; color: var(--brand-dark); font-size: 1.05rem; font-weight: 500; }
+.zh-shell .faculty-search-label span { display: block; margin-bottom: 0.7rem; }
+.zh-shell .faculty-search-input {
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(46, 45, 44, 0.24);
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--brand-dark);
+  font: inherit;
+  font-size: 1.05rem;
+  box-shadow: inset 0 1px 2px rgba(46, 45, 44, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.zh-shell .faculty-search-input:hover { border-color: rgba(27, 138, 99, 0.5); }
+.zh-shell .faculty-search-input:focus {
+  border-color: var(--brand-primary);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(27, 138, 99, 0.12);
+  outline: none;
+}
+.zh-shell .faculty-search-input::placeholder { color: rgba(46, 45, 44, 0.48); }
+
+.zh-shell .faculty-card-list { display: grid; gap: 1.5rem; margin-top: 1.25rem; margin-bottom: 1.25rem; }
+.zh-shell .faculty-card-link { display: block; color: inherit; text-decoration: none; }
+.zh-shell #faculties > a { display: inline-block; margin-top: 0.5rem; margin-bottom: 0.5rem; }
+.zh-shell a[href="/zh/admission"] { display: inline-block; margin-bottom: 0.35rem; }
+.zh-shell .faculty-card-article {
+  position: relative;
+  margin: 0;
+  padding: 1.3rem 1.5rem 1.1rem;
+  border: 1px solid rgba(46, 45, 44, 0.18);
+  border-top: 4px solid var(--brand-primary);
+  border-radius: 0.7rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,246,244,0.94));
+  box-shadow: 0 12px 28px rgba(46, 45, 44, 0.05);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.zh-shell .faculty-card-article:hover {
+  transform: translateY(-2px);
+  border-color: rgba(27, 138, 99, 0.35);
+  box-shadow: 0 16px 32px rgba(46, 45, 44, 0.1);
+}
+.zh-shell .faculty-card-title {
+  margin: 0 0 0.85rem;
+  color: var(--brand-dark);
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+.zh-shell .faculty-card-list-items {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--color-text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.8;
+}
+.zh-shell .faculty-card-list-items li + li { margin-top: 0.1rem; }
+
+.zh-shell details {
+  display: grid;
+  grid-template-rows: auto 0fr;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: grid-template-rows 0.35s ease;
+}
+.zh-shell details[open] {
+  grid-template-rows: auto 1fr;
+}
 .zh-shell summary { cursor: pointer; color: var(--brand-dark); font-weight: 700; }
 .zh-shell summary:hover { color: var(--brand-primary); }
-.zh-shell details p { margin-top: 0.8rem; color: var(--color-text-secondary); }
+.zh-shell details p {
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+  color: var(--color-text-secondary);
+  transform: translateY(-8px);
+  transition: opacity 0.28s ease, transform 0.28s ease, margin-top 0.28s ease;
+  min-height: 0;
+}
+.zh-shell details[open] p {
+  margin-top: 0.8rem;
+  opacity: 1;
+  transform: translateY(0);
+}
 .zh-shell nav[aria-label="FAQ 分类导航"] ul { display: flex; flex-wrap: wrap; gap: 0.7rem; margin: 1.5rem 0 2.5rem; padding: 0; list-style: none; }
 .zh-shell nav[aria-label="FAQ 分类导航"] a { padding: 0.55rem 0.9rem; border: 1px solid var(--brand-primary); color: var(--brand-primary); font-size: 0.9rem; }
 .zh-shell nav[aria-label="FAQ 分类导航"] a:hover { background: var(--brand-primary); color: #fff; text-decoration: none; }

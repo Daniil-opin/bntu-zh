@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 // Главная /zh/ — п.15-23 ТЗ. Только один <h1> на странице (внутри UniversityHero).
 export default function ZhHomePage() {
   return (
-    <>
+    <div className="zh-home-page">
       <UniversityHero />
       <UniversityAbout />
       <UniversityAdvantages />
@@ -35,6 +35,6 @@ export default function ZhHomePage() {
       <PartnersSection />
       <ApplicationForm />
       <ContactsBlock />
-    </>
+    </div>
   );
 }

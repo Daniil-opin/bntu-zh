@@ -15,22 +15,24 @@ import { FacultyCard } from "./FacultyCard";
 export function FacultySearch({ faculties }: { faculties: Faculty[] }) {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filtered = searchTerm
-    ? faculties.filter((f) => f.nameZh.includes(searchTerm))
+  const normalized = searchTerm.trim().toLowerCase();
+  const filtered = normalized
+    ? faculties.filter((f) => f.nameZh.toLowerCase().includes(normalized))
     : faculties;
 
   return (
-    <div>
-      <label>
-        搜索系与专业
+    <div className="faculty-search">
+      <label className="faculty-search-label">
+        <span>搜索系与专业</span>
         <input
+          className="faculty-search-input"
           type="search"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="输入系名称..."
         />
       </label>
-      <div>
+      <div className="faculty-card-list">
         {filtered.map((f) => (
           <FacultyCard key={f.slug} faculty={f} headingLevel="h2" />
         ))}
