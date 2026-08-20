@@ -7,7 +7,7 @@ export function FacultyHero({ faculty }: { faculty: Faculty }) {
   const summary = faculty.programs[0];
 
   return (
-    <section aria-label="Faculty Hero">
+    <section className="faculty-hero" aria-label="Faculty Hero">
       <h1>{faculty.nameZh}</h1>
       <p>{faculty.descriptionZh || "TODO_VERIFY"}</p>
       <a href="#apply">立即申请</a>

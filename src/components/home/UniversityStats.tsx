@@ -13,9 +13,9 @@ const rows: { label: string; value: string | number }[] = [
 
 export function UniversityStats() {
   return (
-    <section aria-label="大学数据一览">
-      <h2>大学数据一览</h2>
-      <table>
+    <section className="university-stats" aria-labelledby="university-stats-title">
+      <h2 id="university-stats-title">大学数据一览</h2>
+      <table className="university-stats-table">
         <tbody>
           {rows.map((row) => (
             <tr key={row.label}>

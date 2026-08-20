@@ -40,18 +40,28 @@ export function ApplicationForm() {
             }
           }}
         >
-          <label>
-            姓名
-            <input name="name" required />
-          </label>
-          <label>
-            邮箱
-            <input name="email" type="email" required />
-          </label>
-          <label>
-            意向专业
-            <input name="programInterest" />
-          </label>
+          <div className="floating-field">
+            <input id="application-name" name="name" placeholder=" " required />
+            <label htmlFor="application-name">姓名</label>
+          </div>
+          <div className="floating-field">
+            <input
+              id="application-email"
+              name="email"
+              type="email"
+              placeholder=" "
+              required
+            />
+            <label htmlFor="application-email">邮箱</label>
+          </div>
+          <div className="floating-field">
+            <input
+              id="application-program-interest"
+              name="programInterest"
+              placeholder=" "
+            />
+            <label htmlFor="application-program-interest">意向专业</label>
+          </div>
           <button type="submit" disabled={status === "submitting"}>
             {status === "submitting" ? "提交中..." : "提交申请"}
           </button>

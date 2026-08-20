@@ -16,11 +16,11 @@ interface FacultyCardProps {
 export function FacultyCard({ faculty, headingLevel }: FacultyCardProps) {
   const Heading = headingLevel;
   return (
-    <Link href={`/zh/faculties/${faculty.slug}`}>
-      <article>
-        <Heading>{faculty.nameZh}</Heading>
+    <Link className="faculty-card-link" href={`/zh/faculties/${faculty.slug}`}>
+      <article className="faculty-card-article">
+        <Heading className="faculty-card-title">{faculty.nameZh}</Heading>
         {faculty.programs.length > 0 && (
-          <ul>
+          <ul className="faculty-card-list-items">
             {faculty.programs.map((p) => (
               <li key={p.id}>{p.nameZh}</li>
             ))}
