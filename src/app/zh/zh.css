@@ -101,7 +101,7 @@
 .hero-note { position: absolute; right: 8%; bottom: 10%; z-index: 1; color: rgba(255, 255, 255, 0.422); font-family: "Roboto Slab", serif; font-size: clamp(4rem, 10vw, 9rem); font-weight: 800; line-height: 0.6; letter-spacing: -0.08em; }
 .hero-note span { font-family: "Roboto", sans-serif; font-size: 0.16em; letter-spacing: 0.18em; }
 
-.zh-shell section > h2:first-child { max-width: 18ch; }
+.zh-shell section > h2:first-child { max-width: 32ch; }
 .zh-shell section > p { color: var(--color-text-secondary); }
 .zh-shell table { width: 100%; margin: 1.5rem 0 2rem; border-collapse: collapse; font-family: "Roboto", sans-serif; font-size: 0.95rem; }
 .zh-shell th, .zh-shell td { padding: 1rem; border-bottom: 1px solid var(--color-border); text-align: left; }
@@ -125,6 +125,12 @@
 .zh-shell form input:hover, .zh-shell input[type="search"]:hover { border-color: var(--brand-dark-60); }
 .zh-shell form input:focus, .zh-shell input[type="search"]:focus { border-color: var(--brand-primary); outline: 3px solid var(--brand-primary-20); }
 .zh-shell form input::placeholder, .zh-shell input[type="search"]::placeholder { color: var(--color-text-secondary); }
+.zh-shell form .floating-field { position: relative; margin-bottom: 1.2rem; }
+.zh-shell form .floating-field input { min-height: 60px; margin-top: 0; padding: 1.45rem 0.85rem 0.45rem; }
+.zh-shell form .floating-field input::placeholder { color: transparent; }
+.zh-shell form .floating-field label { position: absolute; top: 50%; left: 0.85rem; margin: 0; color: var(--color-text-secondary); line-height: 1; pointer-events: none; transform: translateY(-50%); transform-origin: left top; transition: top 0.18s ease, color 0.18s ease, font-size 0.18s ease, transform 0.18s ease; }
+.zh-shell form .floating-field input:focus + label, .zh-shell form .floating-field input:not(:placeholder-shown) + label { top: 0.55rem; font-size: 0.7rem; transform: translateY(0); }
+.zh-shell form .floating-field input:focus + label { color: var(--brand-primary); }
 .zh-shell form button, .zh-shell .application-submit { min-height: 48px; display: inline-flex; align-items: center; margin-top: 0.4rem; padding: 0.75rem 1.6rem; border: 1px solid var(--brand-primary); border-radius: 2px; background: var(--brand-primary); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
 .zh-shell form button:hover, .zh-shell .application-submit:hover { background: #126b4c; border-color: #126b4c; color: #fff; text-decoration: none; }
 .zh-shell form button:active, .zh-shell .application-submit:active { background: #0b5038; }
