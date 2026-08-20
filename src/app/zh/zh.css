@@ -63,15 +63,17 @@
   margin-top: 0.5rem;
 }
 
-.zh-shell > header { background: var(--color-background); border-bottom: 1px solid var(--color-border); }
+.zh-shell > header { position: sticky; top: 0; z-index: 100; background: var(--color-background); border-bottom: 1px solid var(--color-border); }
 .header-inner { max-width: none; margin: 0 auto; padding: 0 1.5rem; }
-.utility-bar { background: #d6d6d6; color: var(--brand-dark); }
-.utility-inner { min-height: 28px; display: flex; align-items: center; gap: 1.5rem; }
+.utility-bar { max-height: 28px; overflow: hidden; background: #d6d6d6; color: var(--brand-dark); transition: max-height 0.7s ease, opacity 0.7s ease, transform 0.7s ease; }
+.utility-bar.is-scrolled { max-height: 0; opacity: 0; transform: translateY(-8px); pointer-events: none; }
+.utility-inner { min-height: 28px; display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; }
 .utility-inner nav { flex: 0 0 auto; }
 .utility-inner ul { display: flex; align-items: center; gap: 1.4rem; margin: 0; padding: 0; list-style: none; }
-.utility-inner a { color: var(--brand-dark); font-size: 0.72rem; white-space: nowrap; }
+.utility-inner li { display: flex; align-items: center; margin: 0; }
+.utility-inner a { display: inline-flex; align-items: center; color: var(--brand-dark); font-size: 0.72rem; line-height: 1; white-space: nowrap; }
 .utility-inner a:hover { color: var(--brand-primary); text-decoration: underline; }
-.language-nav { margin-left: auto; }
+.language-nav { margin-left: 0; }
 .language-nav a { color: var(--brand-primary); font-weight: 500; }
 .theme-toggle { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.15rem 0; border: 0; background: transparent; color: var(--brand-dark); font: inherit; font-size: 0.72rem; white-space: nowrap; cursor: pointer; }
 .theme-toggle-track { width: 36px; height: 20px; padding: 2px; border: 1px solid var(--brand-primary); border-radius: 999px; background: var(--brand-primary); transition: background 0.2s ease, border-color 0.2s ease; }
@@ -91,21 +93,21 @@
 .primary-inner > .brand { margin-left: 0; }
 .primary-inner > .header-cta { margin-right: 0; }
 .brand { display: flex; align-items: center; flex-shrink: 0; color: var(--brand-dark) !important; text-decoration: none !important; }
-.brand-logo { width: 48px; height: 48px; display: block; object-fit: contain; }
+.brand-logo { width: 55px; height: 55px; display: block; object-fit: contain; }
 .brand-name { display: none; }
-.primary-nav { flex: 1; margin-left: 1.25rem; }
-.primary-nav > ul { display: flex; justify-content: flex-start; gap: clamp(1rem, 2.2vw, 2rem); margin: 0; padding: 0; list-style: none; }
-.primary-nav a { position: relative; color: var(--brand-dark); font-size: 0.92rem; font-weight: 400; white-space: nowrap; }
+.primary-nav { flex: 1; display: flex; align-items: center; margin-left: 1.25rem; }
+.primary-nav > ul { display: flex; align-items: center; justify-content: flex-start; gap: clamp(1rem, 2.2vw, 2rem); margin: 0; padding: 0; list-style: none; }
+.primary-nav a { position: relative; color: var(--brand-dark); font-size: 20px; font-weight: 400; line-height: 1.2; white-space: nowrap; }
 .primary-nav a::after { position: absolute; right: 0; bottom: -0.5rem; left: 0; height: 2px; background: var(--brand-primary); content: ""; opacity: 0; transform: scaleX(0.4); transition: opacity 0.15s ease, transform 0.15s ease; }
 .primary-nav a:hover, .primary-nav a:focus-visible { color: var(--brand-primary); text-decoration: none; }
 .primary-nav a:hover::after, .primary-nav a:focus-visible::after { opacity: 1; transform: scaleX(1); }
-.contact-link { color: var(--brand-dark) !important; font-size: 0.9rem; white-space: nowrap; }
+.contact-link { margin-right: 1.25rem; color: var(--brand-dark) !important; font-size: 0.9rem; white-space: nowrap; }
 .contact-link:hover { color: var(--brand-primary) !important; text-decoration: none !important; }
-.header-cta { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; position: relative; padding: 0.65rem 2rem 0.65rem 1.05rem; border: 1px solid var(--brand-primary); background: var(--brand-primary); color: #fff !important; font-size: 0.9rem !important; font-weight: 700 !important; line-height: 1.2; white-space: nowrap; }
+.header-cta { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; position: relative; padding: 0.7rem 1.25rem; border: 1px solid var(--brand-primary); background: var(--brand-primary); color: #fff !important; font-size: 0.9rem !important; font-weight: 700 !important; line-height: 1.2; white-space: nowrap; }
 .header-cta:hover { background: #126b4c !important; text-decoration: none !important; }
-.header-cta span, .hero-actions span { margin-left: 0.45rem; }
-.header-cta span { position: absolute; top: 40%; right: 20%; margin-left: 0; transform: translate(50%, -50%); transition: top 0.25s ease, right 0.25s ease, transform 0.25s ease; }
-.header-cta:hover span, .header-cta:focus-visible span { top: 0.45rem; right: 0.6rem; transform: translate(3px, -3px); }
+.header-cta span, .hero-actions span { margin-left: 0; }
+.header-cta span { position: static; transform: none; transition: transform 0.25s ease; }
+.header-cta:hover span, .header-cta:focus-visible span { transform: translate(2px, -2px); }
 .mobile-menu, .mobile-theme-toggle { display: none; }
 
 .hero-section { width: 100vw; max-width: none; min-height: min(650px, 76vh); margin: 0 0 6rem calc(50% - 50vw); padding: clamp(5rem, 12vw, 9rem) max(2rem, calc((100vw - var(--max-width)) / 2 + 2rem)); display: flex; align-items: center; position: relative; overflow: hidden; color: #fff; background-color: var(--brand-onyx); background-image: linear-gradient(90deg, rgba(20, 24, 22, 0.88) 0%, rgba(20, 24, 22, 0.68) 48%, rgba(20, 24, 22, 0.3) 100%), url("/brand/university-building.png"); background-position: center center; background-repeat: no-repeat; background-size: cover; }
@@ -245,6 +247,7 @@
 .zh-shell form button:hover, .zh-shell .application-submit:hover { background: #126b4c; border-color: #126b4c; color: #fff; text-decoration: none; }
 .zh-shell form button:active, .zh-shell .application-submit:active { background: #0b5038; }
 .zh-shell form button:disabled { background: var(--brand-primary-40); border-color: var(--brand-primary-40); cursor: not-allowed; }
+#apply { scroll-margin-top: 90px; }
 
 .zh-shell > footer { padding: 0; background: var(--footer-background); color: var(--footer-text); }
 .footer-inner {

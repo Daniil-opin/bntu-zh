@@ -1,12 +1,32 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 // Верхняя навигация. Структура пунктов — см. п.13 ТЗ.
 // Вёрстку/дизайн доработать позже — здесь только семантический каркас.
 export function ZhHeader() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+
+      setIsScrolled((currentlyScrolled) => {
+        if (currentlyScrolled) return scrollPosition > 4;
+        return scrollPosition > 40;
+      });
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header>
-      <div className="utility-bar">
+    <header className="site-header">
+      <div className={`utility-bar${isScrolled ? " is-scrolled" : ""}`}>
         <div className="header-inner utility-inner">
           {/* <nav aria-label="服务导航">
             <ul>
@@ -57,7 +77,7 @@ export function ZhHeader() {
           </ul>
         </nav>
         <a className="contact-link" href="https://bntu.by/contacts">☎ 联系我们</a>
-        <a className="header-cta" href="#apply">申请入学 <span aria-hidden="true">↗</span></a>
+        <a className="header-cta" href="/zh/#apply">申请入学 <span aria-hidden="true">↗</span></a>
         <ThemeToggle className="mobile-theme-toggle" />
       </div>
     </header>
