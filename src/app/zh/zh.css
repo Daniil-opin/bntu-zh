@@ -29,6 +29,9 @@
   --max-width: 1180px;
   background: var(--color-background);
   color: var(--color-text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   font-family: "Roboto", sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -43,25 +46,8 @@
 .zh-shell h2 { margin: 0 0 1.4rem; padding-top: 0.8rem; border-top: 2px solid var(--brand-primary); font-size: clamp(2rem, 4vw, 3.5rem); }
 .zh-shell h3 { margin: 0 0 0.6rem; font-size: clamp(1.25rem, 2vw, 1.7rem); }
 .zh-shell p { max-width: 70ch; margin: 0 0 1rem; font-size: 1rem; }
-.zh-shell ol, .zh-shell ul { margin: 0 0 1.1rem; padding-left: 0; list-style: none; }
-.zh-shell li { margin: 0 0 0.35rem; line-height: 1.5; }
-.zh-shell li::marker { content: ""; display: none; }
-.zh-shell li:last-child { margin-bottom: 0; }
-.zh-shell summary::-webkit-details-marker { display: none; }
-.zh-shell summary::marker { content: ""; display: none; }
 .zh-shell > main { max-width: var(--max-width); margin: 0 auto; padding: 0 2rem 6rem; }
-.zh-shell > main > section,
-.zh-shell > main > .zh-home-page > section { margin-bottom: 3.5rem; }
-.zh-shell > main > .zh-home-page > section:last-of-type { margin-bottom: 0; }
-.zh-shell > main > h1,
-.zh-shell > main > section:first-of-type > h1,
-.zh-shell > main > .zh-home-page > section:first-of-type > h1 {
-  margin-top: 0.5rem;
-}
-.zh-shell > main > .zh-home-page { padding-top: 0; }
-.zh-shell > main > :first-child:not(.zh-home-page) {
-  margin-top: 0.5rem;
-}
+.zh-shell > main > section { margin-bottom: 6rem; }
 
 .zh-shell > header { background: var(--color-background); border-bottom: 1px solid var(--color-border); }
 .header-inner { max-width: none; margin: 0 auto; padding: 0 1.5rem; }
@@ -246,17 +232,17 @@
 .zh-shell form button:active, .zh-shell .application-submit:active { background: #0b5038; }
 .zh-shell form button:disabled { background: var(--brand-primary-40); border-color: var(--brand-primary-40); cursor: not-allowed; }
 
-.zh-shell > footer { padding: 0; background: var(--footer-background); color: var(--footer-text); }
+.zh-shell > footer { padding: 0; overflow: hidden; background: var(--footer-background); color: var(--footer-text); }
 .footer-inner {
   width: 100%;
-  height: 430px;
+  min-height: 430px;
   display: grid;
+  align-items: stretch;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .footer-map {
   width: 100%;
-  height: 430px;
   overflow: hidden;
   background: #111111;
 }
@@ -273,7 +259,7 @@
 
 .map-caption { position: absolute; right: 1.5rem; bottom: 1.5rem; z-index: 1; padding: 0.65rem 0.85rem; background: rgba(20, 22, 21, 0.9); color: #fff !important; font-size: 0.8rem; text-decoration: none !important; }
 .map-caption b { margin-left: 0.4rem; color: var(--brand-lime); }
-.footer-contacts { width: 100%; max-width: 620px; padding: 3.35rem clamp(2rem, 4vw, 3.75rem); background: var(--footer-background); color: var(--footer-text); }
+.footer-contacts { width: 100%; padding: 3.35rem clamp(2rem, 4vw, 3.75rem); background: var(--footer-background); color: var(--footer-text); }
 .footer-brand { display: none; }
 .footer-contacts h2, .footer-contact-link, .footer-address { color: var(--footer-text) !important; }
 .footer-contacts h2 { max-width: none !important; margin: 0 0 1.55rem; padding: 0; border: 0; font-family: "Roboto", sans-serif; font-size: clamp(2rem, 2.6vw, 2.45rem); font-weight: 400; letter-spacing: -0.02em; }
@@ -335,7 +321,7 @@
   .zh-shell table { display: block; overflow-x: auto; white-space: nowrap; }
   .hero-actions a { flex: 1 1 100%; min-width: 0; }
    .footer-inner {
-    height: auto;
+    min-height: 0;
     grid-template-columns: 1fr;
   }
 
@@ -368,6 +354,10 @@
     --footer-muted: rgba(244, 243, 239, 0.62);
     --footer-map-filter: grayscale(1) invert(0.92) brightness(0.62) contrast(1.15);
   }
+
+  :root:not([data-theme="light"]) {
+    --page-background: #202321;
+  }
 }
 
 :root[data-theme="dark"] .zh-shell {
@@ -385,6 +375,10 @@
   --footer-text: #f4f3ef;
   --footer-muted: rgba(244, 243, 239, 0.62);
   --footer-map-filter: grayscale(1) invert(0.92) brightness(0.62) contrast(1.15);
+}
+
+:root[data-theme="dark"] {
+  --page-background: #202321;
 }
 
 :root[data-theme="dark"] body {
