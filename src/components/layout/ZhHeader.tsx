@@ -77,7 +77,7 @@ export function ZhHeader() {
             <li><Link href="/zh/agents">招生代理</Link></li>
           </ul>
         </nav>
-        <a className="contact-link" href="https://bntu.by/contacts">☎ 联系我们</a>
+        <Link className="contact-link" href="/zh/contacts">☎ 联系我们</Link>
         <a className="header-cta" href="/zh/#apply">申请入学 <span aria-hidden="true">↗</span></a>
         <ThemeToggle className="mobile-theme-toggle" />
       </div>
