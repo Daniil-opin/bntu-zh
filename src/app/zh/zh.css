@@ -278,14 +278,16 @@
 .zh-shell > footer { padding: 0; overflow: hidden; background: var(--footer-background); color: var(--footer-text); }
 .footer-inner {
   width: 100%;
-  min-height: 430px;
   display: grid;
   align-items: stretch;
+  grid-auto-rows: minmax(0, auto);
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .footer-map {
   width: 100%;
+  min-height: 0;
+  aspect-ratio: 650 / 450;
   overflow: hidden;
   background: #111111;
 }
@@ -381,6 +383,7 @@
 
   .footer-map {
     height: 280px;
+    aspect-ratio: auto;
   }
   .footer-map > iframe,
   .footer-map iframe,
